@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+
+<body>
+	<script type="text/javascript">
+		function sockPairs(n, ar) {
+			var ar = ar.sort((a,b)=>a-b);
+		  var pairCount = 0;
+		  for (var i = 0; i < n; i++) {
+		    var tempPairCount = 1;
+		    if (i != 0) {
+		      if (ar[i] == ar[i - 1]) {
+		        continue;
+		      }
+		    }
+		    for (var j = i + 1; j < n; j++) {
+		      if (ar[i] != ar[j]) {
+		        pairCount = pairCount + tempPairCount / 2;
+		        break;
+		      } else {
+		        tempPairCount++;
+		        if (j == n - 1) {
+		          pairCount = pairCount + tempPairCount / 2;
+		          break;
+		        }
+		      }
+		    }
+		  }
+		  return pairCount;
+		}
+		console.log(sockPairs);
+		var n=11;
+		var socks = [1, 30, 2, 10, 8, 2, 10, 8, 4, 2, 1];
+		var socks2 = [10, 20, 20, 10, 10, 30, 50, 10, 20];
+		sockPairs(socks); // returns 4
+		sockPairs(socks2); // returns 3
+		console.log(`total: ${sockPairs(n,socks)} pairs`);
+	</script>
+</body>
+</html>
